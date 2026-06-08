@@ -1,0 +1,156 @@
+--!strict
+-- Weapon data registry.  All weapons are data-driven; adding a new weapon
+-- requires only a new entry here plus a Tool model in the asset catalogue.
+
+local Types = require(script.Parent.Parent.Types)
+
+type WeaponData = Types.WeaponData
+
+local WeaponData: { [string]: WeaponData } = {
+
+	-- ── Robber Weapons ────────────────────────────────────────────────────────
+
+	AK74 = {
+		Name = "AK74",
+		DisplayName = "AK-74",
+		FireMode = "Automatic",
+		Damage = 28,
+		HeadshotMultiplier = 2.2,
+		FireRate = 8,
+		MagazineSize = 30,
+		ReloadTime = 2.4,
+		RecoilX = 0.4,
+		RecoilY = 1.2,
+		Spread = 1.8,
+		PelletsPerShot = 1,
+		FalloffStart = 60,
+		FalloffEnd = 140,
+		FalloffMin = 0.55,
+		MaxRange = 300,
+		AllowedTeams = { "Robbers" },
+	},
+
+	SPAS12 = {
+		Name = "SPAS12",
+		DisplayName = "SPAS-12",
+		FireMode = "Shotgun",
+		Damage = 12,
+		HeadshotMultiplier = 1.5,
+		FireRate = 1.2,
+		MagazineSize = 8,
+		ReloadTime = 3.2,
+		RecoilX = 0.6,
+		RecoilY = 2.5,
+		Spread = 6.0,
+		PelletsPerShot = 8,
+		FalloffStart = 20,
+		FalloffEnd = 50,
+		FalloffMin = 0.3,
+		MaxRange = 80,
+		AllowedTeams = { "Robbers" },
+	},
+
+	DesertEagle = {
+		Name = "DesertEagle",
+		DisplayName = "Desert Eagle",
+		FireMode = "SemiAutomatic",
+		Damage = 55,
+		HeadshotMultiplier = 2.5,
+		FireRate = 2.5,
+		MagazineSize = 7,
+		ReloadTime = 2.0,
+		RecoilX = 0.7,
+		RecoilY = 3.0,
+		Spread = 2.5,
+		PelletsPerShot = 1,
+		FalloffStart = 40,
+		FalloffEnd = 100,
+		FalloffMin = 0.6,
+		MaxRange = 200,
+		AllowedTeams = { "Robbers" },
+	},
+
+	-- ── SPECops Weapons ───────────────────────────────────────────────────────
+
+	M4A1 = {
+		Name = "M4A1",
+		DisplayName = "M4A1",
+		FireMode = "Automatic",
+		Damage = 24,
+		HeadshotMultiplier = 2.0,
+		FireRate = 9,
+		MagazineSize = 30,
+		ReloadTime = 2.1,
+		RecoilX = 0.3,
+		RecoilY = 0.9,
+		Spread = 1.4,
+		PelletsPerShot = 1,
+		FalloffStart = 80,
+		FalloffEnd = 200,
+		FalloffMin = 0.6,
+		MaxRange = 400,
+		AllowedTeams = { "SPECops" },
+	},
+
+	MP5 = {
+		Name = "MP5",
+		DisplayName = "MP5",
+		FireMode = "Automatic",
+		Damage = 18,
+		HeadshotMultiplier = 2.0,
+		FireRate = 13,
+		MagazineSize = 30,
+		ReloadTime = 1.8,
+		RecoilX = 0.2,
+		RecoilY = 0.6,
+		Spread = 1.2,
+		PelletsPerShot = 1,
+		FalloffStart = 40,
+		FalloffEnd = 100,
+		FalloffMin = 0.5,
+		MaxRange = 150,
+		AllowedTeams = { "SPECops" },
+	},
+
+	SniperRifle = {
+		Name = "SniperRifle",
+		DisplayName = "SR-25",
+		FireMode = "SemiAutomatic",
+		Damage = 80,
+		HeadshotMultiplier = 3.0,
+		FireRate = 0.8,
+		MagazineSize = 10,
+		ReloadTime = 3.5,
+		RecoilX = 0.1,
+		RecoilY = 5.0,
+		Spread = 0.1,
+		PelletsPerShot = 1,
+		FalloffStart = 300,
+		FalloffEnd = 500,
+		FalloffMin = 0.7,
+		MaxRange = 500,
+		AllowedTeams = { "SPECops" },
+	},
+
+	Glock = {
+		Name = "Glock",
+		DisplayName = "Glock 17",
+		FireMode = "SemiAutomatic",
+		Damage = 20,
+		HeadshotMultiplier = 2.0,
+		FireRate = 4,
+		MagazineSize = 17,
+		ReloadTime = 1.5,
+		RecoilX = 0.2,
+		RecoilY = 0.8,
+		Spread = 2.0,
+		PelletsPerShot = 1,
+		FalloffStart = 30,
+		FalloffEnd = 80,
+		FalloffMin = 0.5,
+		MaxRange = 150,
+		AllowedTeams = { "Robbers", "SPECops" },
+	},
+}
+
+return WeaponData

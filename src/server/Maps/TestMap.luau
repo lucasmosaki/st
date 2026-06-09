@@ -4,6 +4,7 @@
 -- Replace spawn CFrames and loot nodes with actual in-world positions.
 
 local MapRegistry = require(script.Parent.MapRegistry)
+local DowntownHeistGeometry = require(script.Parent.DowntownHeistGeometry)
 
 MapRegistry.Register({
 	Id = "TestMap",
@@ -145,3 +146,5 @@ MapRegistry.Register({
 	Description = "A bustling downtown district with a jewelry store, museum, tech office, and casino.",
 	ThumbnailId = "rbxassetid://0",
 })
+
+MapRegistry.RegisterGeometry("TestMap", DowntownHeistGeometry.Build)

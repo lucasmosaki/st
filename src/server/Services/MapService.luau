@@ -113,13 +113,27 @@ function MapService.BroadcastVoteState()
 	NetworkService.FireAllClients(Constants.NETWORK.MAP_VOTE_STATE, eligible, tally)
 end
 
--- Load a map into Workspace (stub: in production, use InsertService or ServerStorage)
+-- Load a map into Workspace.
+-- Priority 1: procedural geometry builder registered via MapRegistry.RegisterGeometry.
+-- Priority 2: a Model in ServerStorage.Maps matching config.Id.
 function MapService.LoadMap(config: MapConfig): boolean
 	_currentMap = config
 	NetworkService.FireAllClients(Constants.NETWORK.ROUND_STATE_CHANGED, "MapLoading", config.Id)
-	-- In production, load the map model here from ServerStorage:
-	-- local model = game:GetService("ServerStorage").Maps:FindFirstChild(config.Id)
-	-- if model then model:Clone().Parent = Workspace end
+
+	local buildFn = MapRegistry.GetGeometryBuilder(config.Id)
+	if buildFn then
+		buildFn(config)
+	else
+		local ss = game:GetService("ServerStorage")
+		local mapsFolder = ss:FindFirstChild("Maps")
+		if mapsFolder then
+			local model = mapsFolder:FindFirstChild(config.Id)
+			if model then
+				(model :: Instance):Clone().Parent = workspace
+			end
+		end
+	end
+
 	print("[MapService] Loaded map:", config.DisplayName)
 	return true
 end

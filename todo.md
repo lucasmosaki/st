@@ -44,7 +44,7 @@ sh / sound handled by Tool scri
 pts in production
 end
 
--- ── Reload ──────────────────
+-- ── Reload ────────────────── 
 ───────────────────────────────
 ───────────────────
 
@@ -126,3 +126,14 @@ What to do next in Studio
 3. Load map models — Uncomment the         InsertSeMapService.LoadMap.
 4. Replace placeholder asset IDs — Ability icons inlities use rbxassetid://0.
 5. EnablddLocalScript for footstep volume (reads GhostWal and hitmarkers.
+
+---
+//TODO
+Now I have a complete picture. I'll create the map geometry builder and wire it into the existing services. This is what Rojo can't sync for you — actual 3D layout of the Downtown Heist map.
+
+Four files to create/update:
+1. New DowntownHeistGeometry.luau — procedural 4-building map
+2. MapRegistry.luau — add geometry builder registry
+3. TestMap.luau — register the builder
+4. MapService.luau — call it in LoadMap
+---
